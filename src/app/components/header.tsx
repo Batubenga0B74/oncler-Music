@@ -11,7 +11,7 @@ export default function Header(){
 
     const navBarItems =[
         {titulo: "DISCOVER", rota: "/###"},
-        {titulo: "PLAYLIST", rota: "/perfil"},
+        {titulo: "PLAYLIST", rota: "/##S"},
         {titulo: "ORIGINAL", rota: "/###"}
     ];
 
