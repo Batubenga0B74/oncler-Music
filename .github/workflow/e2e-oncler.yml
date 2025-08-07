@@ -16,7 +16,7 @@ jobs:
               node-version: '22'
 
          - name: instalar as dependencias
-           run: npm install
+           run: npm install 
 
          - name: executar o projecto
            run: |
