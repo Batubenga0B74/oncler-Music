@@ -1,33 +1,29 @@
 name: TEST CYPRESS ONCLER
+
 on:
   push:
     branches: [main]
+
 jobs:
   e2e-oncler:
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-      steps:
-         - name: Checkout do código
-           uses: actions/checkout@v3
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
-         - name: Configurar Node.js
-           uses: actions/setup-node@v3
-           with:
-              node-version: '22'
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
 
-         - name: instalar as dependencias
-           run: npm install 
+      - name: Instalar as dependências
+        run: npm install
 
-         - name: executar o projecto
-           run: |
-              nohup npm run dev &
-              npx wait-on http://localhost:3000
+      - name: Executar o projeto
+        run: |
+          nohup npm run dev &
+          npx wait-on http://localhost:3000
 
-         - name: Executar os testes E2E com Cypress
-           run: npx cypress run
-
-     
-
-      
-
-     
+      - name: Executar os testes E2E com Cypress
+        run: npx cypress run
