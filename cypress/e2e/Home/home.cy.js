@@ -4,7 +4,7 @@
 
 describe('Teste do Haeader na Home', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('https://oncler.netlify.app')
   })
 
   it('deve exibir a logo correctamente', () => {
@@ -36,7 +36,7 @@ it('deve conter as opções de criar conta e login',()=>{
 
   describe('teste da listagem de musicas',()=>{
     beforeEach(() => {
-      cy.visit('http://localhost:3000')
+      cy.visit('https://oncler.netlify.app')
     })
     it('ANALISANDO  SE AS MUSICAS FORAM LISTADAS CORRECTAMENTE',()=>{
       cy.get('[data-testid="imagemMusic"]').should('be.visible')
