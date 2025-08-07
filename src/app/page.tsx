@@ -11,7 +11,7 @@ export default function Home() {
       <Header/>
       <section className="flex justify-center items-center gap-14 py-5" >
         <div className="flex justify-center gap-5 bg-[#1E1E1E]">
-          <section className="bg-[url('/music.png')] bg-cover  w-[900px] h-[322px] "></section>
+          <section className="bg-[url('/music.png')] bg-cover  w-[800px] h-[322px] "></section>
 
           <span className="flex text-white text-center justify-center flex-col gap-3 px-28 ">
 
