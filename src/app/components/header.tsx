@@ -10,7 +10,7 @@ export default function Header(){
     const pathName= usePathname()
 
     const navBarItems =[
-        {titulo: "DICOVER", rota: "/###"},
+        {titulo: "DISCOVER", rota: "/###"},
         {titulo: "PLAYLIST", rota: "/perfil"},
         {titulo: "ORIGINAL", rota: "/###"}
     ];
@@ -19,7 +19,7 @@ export default function Header(){
         <div>
             <header className="h-[98px] bg-[#121212] flex gap-3.5 items-center justify-around">
                 <figure className="flex gap-3">
-                    <Image src="/logo.png" alt="" height={42} width={165} />
+                    <Image src="/logo.png" alt="Logo" height={42} width={165} />
                 </figure>
 
                 <div className="w-[430px] h-[50px] rounded-4xl bg-[#1E1E1E] outline-none opacity-100 px-6 gap-5 flex items-center">

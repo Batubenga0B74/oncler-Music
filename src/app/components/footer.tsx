@@ -13,7 +13,7 @@ export default function Footer(){
                 </section>
 
                 <div className="flex flex-col gap-3">
-                    <h1 className=" w-[273px] h-[116px] text-5xl text-white font-semibold ">Request a Demo</h1>
+                    <h1 className=" w-[273px] h-[116px] text-3xl text-white font-semibold ">Request a Demo</h1>
                     <section className="w-[487px] h-[66px] bg-[#1E1E1E] items-center flex  rounded-4xl">
                         <div className="w-[67px] h-[68px] bg-[#53AA00] rounded-full flex ml-auto"/>
                     </section>
