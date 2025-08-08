@@ -49,7 +49,7 @@ export default function Home() {
         
         {/* Menu lateral */}
         <section className="flex flex-col gap-10 justify-center py-10 sm:items-center">
-          <div className="w-full sm:w-[384px] border-b-2 border-b-[#A49797]">
+          <div className=" sm:w-[384px] border-b-2 border-b-[#A49797]">
             <h1 className="w-[100px] text-xl text-[#53AA00] py-8 font-semibold">BROWSER</h1>
             <p className="font-semibold text-[#A49797] leading-8">Trending songs</p>
             <p className="font-semibold text-[#A49797] leading-8">Trending Albums</p>
@@ -58,7 +58,7 @@ export default function Home() {
             <p className="font-semibold text-[#A49797] leading-8 pb-10">Acount for you added</p>
           </div>
 
-          <div className="w-full sm:w-[384px] border-b-2 border-b-[#A49797]">
+          <div className="sm:w-[384px] border-b-2 border-b-[#A49797]">
             <h1 className="w-[100px] text-xl text-[#53AA00] py-8 font-semibold">CHATS</h1>
             <p className="font-semibold text-[#A49797] leading-8">Trending songs</p>
             <p className="font-semibold text-[#A49797] leading-8">Trending Albums</p>
