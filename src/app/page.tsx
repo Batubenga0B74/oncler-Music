@@ -48,7 +48,7 @@ export default function Home() {
       <main className="py-5 flex flex-col lg:flex-row justify-center items-start gap-10 px-4">
         
         {/* Menu lateral */}
-        <section className="flex flex-col gap-10 justify-center py-10 sm:items-center">
+        <section className="flex flex-col gap-10 justify-center px-10  sm:items-center ">
           <div className=" sm:w-[384px] border-b-2 border-b-[#A49797]">
             <h1 className="w-[100px] text-xl text-[#53AA00] py-8 font-semibold">BROWSER</h1>
             <p className="font-semibold text-[#A49797] leading-8">Trending songs</p>
