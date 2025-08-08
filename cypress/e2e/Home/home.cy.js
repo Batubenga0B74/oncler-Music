@@ -44,10 +44,10 @@ it('deve conter as opções de criar conta e login',()=>{
       cy.contains('Trending songs').should('be.visible')
       cy.contains('Trending').should('be.visible')
       cy.contains('Albums').should('be.visible')
-      cy.contains('supportated ').should('be.visible')
+      cy.contains('supportated').should('be.visible')
       cy.contains('Recently added').should('be.visible')
-      cy.contains('Acount for you ').should('be.visible')
-      cy.contains('added  ').should('be.visible')
+      cy.contains('Acount for you').should('be.visible')
+      cy.contains('added').should('be.visible')
      
     })
     it('ANALISANDO  SE O O MENU LATERAL APARECE CORRECTAMENTE CHATS e seu items',()=>{
@@ -55,10 +55,10 @@ it('deve conter as opções de criar conta e login',()=>{
       cy.contains('Trending songs').should('be.visible')
       cy.contains('Trending').should('be.visible')
       cy.contains('Albums').should('be.visible')
-      cy.contains('supportated ').should('be.visible')
+      cy.contains('supportated').should('be.visible')
       cy.contains('Recently added').should('be.visible')
-      cy.contains('Acount for you ').should('be.visible')
-      cy.contains('added  ').should('be.visible')
+      cy.contains('Acount for you').should('be.visible')
+      cy.contains('added').should('be.visible')
      
     })
   })

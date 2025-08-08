@@ -21,7 +21,7 @@ export default function login(){
                     <input
                         type="text"
                         placeholder="freudt@gmail"
-                        className="w-full border border-gray-500 h-11 rounded-lg bg-transparent px-4 placeholder:text-gray-400 outline-none transition-all"
+                        className="w-full border border-gray-500 h-11 rounded-lg bg-transparent px-4 placeholder:text-gray-400 outline-none transition-all text-white"
                     />
                   </div>
                   <div className="w-full h-20">
@@ -31,12 +31,12 @@ export default function login(){
                     <input
                         type="password"
                         placeholder="*** *** ***"
-                        className="w-full border  border-gray-400 h-11 rounded-lg bg-transparent px-4 placeholder:text-gray-400 outline-none transition-all"
+                        className="w-full border  border-gray-400 h-11 rounded-lg bg-transparent px-4 placeholder:text-gray-400 outline-none transition-all text-white"
                     />
                   </div>
                          
                     </div>
-                  <p>aceitar termos</p>
+                  <p className="text-white">aceitar termos</p>
                 <button className="h-11 w-full  bg-[#53AA00] text-white ">
                     Acessar
                 </button>
