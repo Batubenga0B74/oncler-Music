@@ -32,7 +32,7 @@ export default function Header() {
           <div className="hidden md:flex w-[430px] h-[50px] rounded-4xl bg-[#1E1E1E] px-6 gap-5 items-center">
             <Search className="text-[#53AA00]" />
             <input
-              className="placeholder-[#A49797] bg-transparent outline-none flex-1"
+              className="placeholder-[#A49797] bg-transparent outline-none flex-1 text-white"
               placeholder="Search your music"
               type="text"
             />

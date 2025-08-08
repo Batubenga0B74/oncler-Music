@@ -8,17 +8,15 @@ export default function Footer() {
                     <figure>
                         <Image src="/Group 9.png" alt=" " width={100} height={100} />
                     </figure>
-                    <p className="w-full sm:w-[367px] h-auto sm:h-[108px] font-normal flex justify-center items-center text-lg sm:text-xl tracking-normal leading-[100%] text-[#857F94]">
-                        Lorem ipsum dolor sit amet" é uma sequênc trecho de um tratado de Cícero sobre ética.
-                    </p>
+                   
                 </section>
 
-                <div className="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
+                {/* <div className="flex flex-col gap-3 items-center lg:items-start text-center lg:text-left">
                     <h1 className="w-full sm:w-[273px] h-auto sm:h-[116px] text-2xl sm:text-3xl text-white font-semibold">Request a Demo</h1>
                     <section className="w-full sm:w-[487px] h-[66px] bg-[#1E1E1E] items-center flex rounded-4xl">
                         <div className="w-[67px] h-[68px] bg-[#53AA00] rounded-full flex ml-auto" />
                     </section>
-                </div>
+                </div> */}
             </div>
 
             <section className="flex flex-col lg:flex-row justify-around items-center gap-8">
