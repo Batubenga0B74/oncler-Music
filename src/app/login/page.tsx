@@ -11,10 +11,10 @@ export default function login(){
                     <div className="w-full h-11 items-center justify-center flex mt-10">
                         <h1 className="text-2xl text-white">Iniciar sessão</h1>
                     </div>
-                    <div className=" w-full h-60 flex flex-col gap-10 mt-24 p-5">
+                    <div className=" w-full h-60 flex flex-col gap-10 mt-24 ">
 
 
-                  <div className="w-full h-20 gap-10">
+                  <div className="w-full h-28 gap-5 flex flex-col">
                     <label htmlFor="" className="text-white">
                         Email
                     </label>
@@ -24,7 +24,7 @@ export default function login(){
                         className="w-full border border-gray-500 h-11 rounded-lg bg-transparent px-4 placeholder:text-gray-400 outline-none transition-all text-white"
                     />
                   </div>
-                  <div className="w-full h-20">
+                  <div className="w-full h-28 gap-5 flex flex-col">
                     <label htmlFor="" className="text-white ">
                         palavra passe
                     </label>
@@ -33,10 +33,11 @@ export default function login(){
                         placeholder="*** *** ***"
                         className="w-full border  border-gray-400 h-11 rounded-lg bg-transparent px-4 placeholder:text-gray-400 outline-none transition-all text-white"
                     />
-                  </div>
-                         
+                  </div>      
                     </div>
-                  <p className="text-white">aceitar termos</p>
+                    <div className="w-full">
+                        <p className="text-white">aceitar termos</p>
+                    </div>
                 <button className="h-11 w-full  bg-[#53AA00] text-white ">
                     Acessar
                 </button>
