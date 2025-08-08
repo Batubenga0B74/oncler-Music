@@ -55,12 +55,12 @@ export default function Home() {
 
           <span className="text-center flex flex-col  gap-3 justify-center">
             <div className="text-center flex justify-center items-center gap-3">
-              <button className="w-[117px] h-[44px] rounded-3xl border-2 border-[#53AA00] text-center tracking-normal leading-[100%] text-white font-semibold justify-center">FOLLOW</button>
-              <button className="w-[117px] h-[44px] rounded-3xl border-2 border-[#53AA00] text-center tracking-normal leading-[100%] text-white font-semibold justify-center">FOLLOW</button>
+              <button className="w-[117px] h-[44px] rounded-3xl border-2 border-[#53AA00] text-center tracking-normal leading-[100%] text-white font-semibold justify-center">ALBUM</button>
+              <button className="w-[117px] h-[44px] rounded-3xl border-2 border-[#53AA00] text-center tracking-normal leading-[100%] text-white font-semibold justify-center">MIXSTYP</button>
             </div>
 
             <div>
-              <button className="w-[117px] h-[44px] rounded-3xl border-2 border-[#53AA00] text-center tracking-normal leading-[100%] text-white font-semibold justify-center">FOLLOW</button>
+              <button className="w-[117px] h-[44px] rounded-3xl border-2 border-[#53AA00] text-center tracking-normal leading-[100%] text-white font-semibold justify-center">EP</button>
             </div>
 
           </span>

@@ -29,19 +29,37 @@ it('deve conter as opções de criar conta e login',()=>{
   cy.contains('SING IN').should('be.visible')
   cy.contains('UPLOAD').should('be.visible')
 })
-
-
-
   })
-
   describe('teste da listagem de musicas',()=>{
     beforeEach(() => {
       cy.visit('https://oncler.netlify.app')
     })
-    it('ANALISANDO  SE AS MUSICAS FORAM LISTADAS CORRECTAMENTE',()=>{
+    it('ANALISANDO  SE AS MUSICAS FORAM LISTADAS CORRECTAMENTE ',()=>{
       cy.get('[data-testid="imagemMusic"]').should('be.visible')
-      cy.get('#Titulo').should('exist')                // título do card
+      cy.get('#Titulo').should('exist')                
       cy.get('#subtitulo').should('exist')  
+    })
+    it('ANALISANDO  SE O O MENU LATERAL APARECE CORRECTAMENTE BROWSER e seu items',()=>{
+      cy.contains('BROWSER').should('be.visible')
+      cy.contains('Trending songs').should('be.visible')
+      cy.contains('Trending').should('be.visible')
+      cy.contains('Albums').should('be.visible')
+      cy.contains('supportated ').should('be.visible')
+      cy.contains('Recently added').should('be.visible')
+      cy.contains('Acount for you ').should('be.visible')
+      cy.contains('added  ').should('be.visible')
+     
+    })
+    it('ANALISANDO  SE O O MENU LATERAL APARECE CORRECTAMENTE CHATS e seu items',()=>{
+      cy.contains('CHATS').should('be.visible')
+      cy.contains('Trending songs').should('be.visible')
+      cy.contains('Trending').should('be.visible')
+      cy.contains('Albums').should('be.visible')
+      cy.contains('supportated ').should('be.visible')
+      cy.contains('Recently added').should('be.visible')
+      cy.contains('Acount for you ').should('be.visible')
+      cy.contains('added  ').should('be.visible')
+     
     })
   })
 

@@ -40,7 +40,9 @@ export default function Header(){
 
                 <span className="flex gap-3.5 text-white">
                     <p className=" w-[140px] h-[19px] font-semibold font-serif leading-[100%] text-[16px] border-r border-r-[#FFBE00] ">Create an accout</p>
-                    <p className=" w-[100px] h-[19px] font-semibold font-serif leading-[100%] text-[16px] ">SING IN</p>
+                    <Link href="/login">
+                         <p className=" w-[100px] h-[19px] font-semibold font-serif leading-[100%] text-[16px] ">SING IN</p>
+                    </Link>
                     <p className=" w-[120px] h-[19px] font-semibold font-serif leading-[100%] text-[16px] ">UPLOAD</p>
                 </span>
 
