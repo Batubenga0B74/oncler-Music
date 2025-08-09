@@ -63,7 +63,10 @@ export default function Header() {
             <Link href="/login">
               <p className="w-[100px] font-semibold font-serif">SING IN</p>
             </Link>
+            <Link href="/upload">
             <p className="w-[120px] font-semibold font-serif">UPLOAD</p>
+            </Link>
+           
           </span>
 
           {/* Botão menu mobile */}
