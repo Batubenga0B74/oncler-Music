@@ -1,6 +1,10 @@
 # 🎵 Oncler — Plataforma de Música
 
-![Oncler Screenshot](./68130f95-3501-47d0-b561-b846d1e35f37.png)
+<p align="center">
+  <img src="./public/screenshot.png" alt="Oncler Screenshot" width="800">
+</p>
+
+
 
 O **Oncler** é uma plataforma online que conecta artistas e ouvintes, permitindo **upload** e **download** de músicas de forma simples e rápida.  
 O projeto foi desenvolvido com foco em **experiência do usuário**, **design moderno** e **suporte para artistas independentes**.
