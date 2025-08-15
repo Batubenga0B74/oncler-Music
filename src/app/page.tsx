@@ -4,8 +4,9 @@ import logo from "./public/logo.png";
 import Header from "./components/header";
 import Card from "./components/card";
 import Footer from "./components/footer";
-
-export default function Home() {
+import { getPopularTracks } from "./lib/deezer"; 
+export default  async  function Home() {
+  const tracks = await getPopularTracks();
   return (
     <div>
       <Header />
@@ -87,11 +88,7 @@ export default function Home() {
                 <p className="cursor-pointer font-bold text-sm text-[#53AA00]">VIEWS ALL</p>
               </span>
               <section className="w-full overflow-x-auto flex gap-5 sm:gap-10">
-                <Card imagem="/e522b2589402bc283ee0676256a232882ceecf8ea27b3b9e9c16e1f258966f87.jpeg" titulo="Tsunami" subtitulo="Chefe" />
-                <Card imagem="/1cad8903492f91e4368f9f7dbbc22e6380a6d6ed778dc8511657155ae3fd5df4.jpeg" titulo="DJ Lutonda" subtitulo="Chefe" />
-                <Card imagem="/16055754-coverart.jpg" titulo="Mike beat" subtitulo="Chefe" />
-                <Card imagem="/44149d8a99f0c02bc7f50cd439aa39ce1a2f4185ebcf5112bc376b9b26b28474.jpeg" titulo="Doja Cat" subtitulo="Chefe" />
-                <Card imagem="/e522b2589402bc283ee0676256a232882ceecf8ea27b3b9e9c16e1f258966f87.jpeg" titulo="Tsunami" subtitulo="Chefe" />
+                <Card tracks={tracks} />
               </section>
             </article>
           ))}

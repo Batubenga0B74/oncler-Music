@@ -57,9 +57,10 @@ export default function Header() {
 
           {/* Ações desktop */}
           <span className="hidden md:flex gap-3.5 text-white">
-            <p className="w-[140px] font-semibold font-serif border-r border-r-[#FFBE00]">
+            <Link href="/cadastro" className="w-[140px] font-semibold font-serif border-r border-r-[#FFBE00]">
               Create an accout
-            </p>
+            </Link>
+
             <Link href="/login">
               <p className="w-[100px] font-semibold font-serif">SING IN</p>
             </Link>
@@ -108,7 +109,9 @@ export default function Header() {
           ))}
 
           {/* Ações mobile */}
-          <p className="text-white">Create an accout</p>
+          <Link href="/cadastro">
+            <p className="text-white">Create an accout</p>
+          </Link>
           <Link href="/login">
             <p className="text-white">SING IN</p>
           </Link>
