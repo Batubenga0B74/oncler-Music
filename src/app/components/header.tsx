@@ -2,41 +2,63 @@
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function Header() {
+interface HeaderProps {
+  onSearch?: (query: string) => void; // opcional, só usado na página /search
+}
+
+export default function Header({ onSearch }: HeaderProps) {
   const pathName = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [query, setQuery] = useState("");
+
+  async function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (!query.trim()) return;
+
+    if (onSearch) {
+      onSearch(query); // já está na página search
+    } else {
+      router.push(`/search?q=${encodeURIComponent(query)}`); // redireciona
+    }
+
+    setQuery("");
+  }
 
   const navBarItems = [
-    { titulo: "DISCOVER", rota: "/###" },
-    { titulo: "PLAYLIST", rota: "/##S" },
-    { titulo: "ORIGINAL", rota: "/###" },
+    { titulo: "DISCOVER", rota: "/discover" },
+    { titulo: "PLAYLIST", rota: "/playlist" },
+    { titulo: "ORIGINAL", rota: "/original" },
   ];
 
   return (
     <header className="bg-[#121212]">
-      {/* Container */}
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Linha principal */}
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-[98px] items-center justify-between">
           {/* Logo */}
           <figure className="flex gap-3">
             <Link href="/">
-            <Image src="/logo.png" alt="Logo" height={42} width={165}  />
+              <Image src="/logo.png" alt="Logo" height={42} width={165} />
             </Link>
           </figure>
 
           {/* Search desktop */}
-          <div className="hidden md:flex w-[430px] h-[50px] rounded-4xl bg-[#1E1E1E] px-6 gap-5 items-center">
+          <form
+            onSubmit={handleSearch}
+            className="hidden md:flex w-[430px] h-[50px] rounded-4xl bg-[#1E1E1E] px-6 gap-5 items-center"
+          >
             <Search className="text-[#53AA00]" />
             <input
               className="placeholder-[#A49797] bg-transparent outline-none flex-1 text-white"
               placeholder="Search your music"
               type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-          </div>
+          </form>
 
           {/* Navegação desktop */}
           <nav className="hidden md:flex gap-3.5 text-white">
@@ -57,17 +79,19 @@ export default function Header() {
 
           {/* Ações desktop */}
           <span className="hidden md:flex gap-3.5 text-white">
-            <Link href="/cadastro" className="w-[140px] font-semibold font-serif border-r border-r-[#FFBE00]">
-              Create an accout
+            <Link
+              href="/cadastro"
+              className="w-[140px] font-semibold font-serif border-r border-r-[#FFBE00]"
+            >
+              Create an account
             </Link>
 
             <Link href="/login">
-              <p className="w-[100px] font-semibold font-serif">SING IN</p>
+              <p className="w-[100px] font-semibold font-serif">SIGN IN</p>
             </Link>
             <Link href="/upload">
-            <p className="w-[120px] font-semibold font-serif">UPLOAD</p>
+              <p className="w-[120px] font-semibold font-serif">UPLOAD</p>
             </Link>
-           
           </span>
 
           {/* Botão menu mobile */}
@@ -84,14 +108,19 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden bg-[#121212] px-4 pb-4 space-y-3">
           {/* Search mobile */}
-          <div className="flex w-full h-[50px] rounded-4xl bg-[#1E1E1E] px-6 gap-5 items-center">
+          <form
+            onSubmit={handleSearch}
+            className="flex w-full h-[50px] rounded-4xl bg-[#1E1E1E] px-6 gap-5 items-center"
+          >
             <Search className="text-[#53AA00]" />
             <input
-              className="placeholder-[#A49797] bg-transparent outline-none flex-1"
+              className="placeholder-[#A49797] bg-transparent outline-none flex-1 text-white"
               placeholder="Search your music"
               type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-          </div>
+          </form>
 
           {/* Links mobile */}
           {navBarItems.map((item, index) => (
@@ -110,12 +139,14 @@ export default function Header() {
 
           {/* Ações mobile */}
           <Link href="/cadastro">
-            <p className="text-white">Create an accout</p>
+            <p className="text-white">Create an account</p>
           </Link>
           <Link href="/login">
-            <p className="text-white">SING IN</p>
+            <p className="text-white">SIGN IN</p>
           </Link>
-          <p className="text-white">UPLOAD</p>
+          <Link href="/upload">
+            <p className="text-white">UPLOAD</p>
+          </Link>
         </div>
       )}
     </header>

@@ -3,20 +3,13 @@
 // Necessário para usar hooks como useState, useRef, useEffect.
 
 import Image from "next/image"; 
-// Componente otimizado do Next.js para imagens.
 
 import { DeezerTrack } from "../lib/deezer"; 
 // Tipo TypeScript que define a estrutura de uma track vinda da API Deezer.
-
 import { useRef, useState } from "react"; 
-// useRef: cria referências a elementos DOM ou valores persistentes.
-// useState: cria estados reativos no componente.
-
 import WaveSurfer from "wavesurfer.js"; 
 // Biblioteca para criar e controlar waveforms de áudio.
-
 import { Play, Pause } from "lucide-react"; 
-// Ícones de play e pause para o botão de controle.
 
 interface CardProps {
   tracks?: DeezerTrack[]; 
@@ -29,7 +22,6 @@ export default function Card({ tracks = [] }: CardProps) {
   if (!tracks || tracks.length === 0) {
     return <p className="text-white">Nenhuma música encontrada.</p>;
   }
-
   return (
     // Lista horizontal de tracks com overflow scroll
     <ul className="flex gap-5 overflow-x-auto hide-scrollbar">
