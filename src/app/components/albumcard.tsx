@@ -20,8 +20,8 @@ export default function AlbumCard({ id, title, cover, artist }: AlbumCardProps) 
       <Image
         src={cover}
         alt={title}
-        width={300}
-        height={300}
+        width={200}
+        height={200}
         className="rounded-xl"
       />
       <h2 className="mt-2 font-bold text-lg truncate">{title}</h2>

@@ -3,18 +3,12 @@ import { useState, useEffect } from "react"; // 🔑 importamos useEffect
 import { useSearchParams } from "next/navigation"; // 🔑 importamos useSearchParams
 import Header from "../components/header";
 import AlbumCard from "../components/albumcard";
+import {DeezerAlbum}from "../types/deezer"
 
-interface DeezerAlbum {
-  id: number;
-  title: string;
-  cover: string;
-  artist: {
-    id: number;
-    name: string;
-  };
-}
+
 
 export default function SearchPage() {
+  // ESSE DeezerAlbum E UMA INTERFACE QUE JÁ ESTA CRIADA NA TYPES
   const [albums, setAlbums] = useState<DeezerAlbum[]>([]);
   const [loading, setLoading] = useState(false);
 

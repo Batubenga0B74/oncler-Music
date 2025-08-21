@@ -1,16 +1,12 @@
 "use client"; 
-// Indica que esse arquivo é um componente Client-side do Next.js.
-// Necessário para usar hooks como useState, useRef, useEffect.
 
 import Image from "next/image"; 
-
-import { DeezerTrack } from "../lib/deezer"; 
-// Tipo TypeScript que define a estrutura de uma track vinda da API Deezer.
+import { DeezerTrack } from "../types/deezer"; 
 import { useRef, useState } from "react"; 
 import WaveSurfer from "wavesurfer.js"; 
-// Biblioteca para criar e controlar waveforms de áudio.
 import { Play, Pause } from "lucide-react"; 
 
+// 1* criar uma interface que recebera um vertor de dados 
 interface CardProps {
   tracks?: DeezerTrack[]; 
   // Recebe um array de músicas da Deezer, opcional.

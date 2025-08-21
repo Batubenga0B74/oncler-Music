@@ -1,18 +1,6 @@
 import axios from "axios";
 
-export interface DeezerTrack {
-  id: number;
-  title: string;
-  artist: {
-    name: string;
-    picture: string;
-  };
-  album: {
-    title: string;
-    cover: string;
-  };
-  preview: string; // link de 30s do áudio
-}
+import {DeezerTrack}from "../types/deezer"
 
 interface DeezerChartResponse {
   data: DeezerTrack[];
