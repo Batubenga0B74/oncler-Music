@@ -110,7 +110,7 @@ export default function UploadPage() {
             <input
               type="text"
               required
-              value={language}
+              value={language} 
               onChange={(e) => setLanguage(e.target.value)}
               placeholder="ex: English"
               className="w-full p-2 rounded bg-black text-white border border-gray-700"
