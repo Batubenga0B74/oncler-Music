@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
   await page.goto('https://oncler.netlify.app/upload');
-  await page.setInputFiles('input[type="file"]', "support/fixtures/docs.mp3")
+  // await page.setInputFiles('input[type="file"]', "support/fixtures/docs.mp3")
   await page.getByPlaceholder('ex: Rock').fill('trap');
   await page.getByPlaceholder('ex: English').fill('portugues');
   await page.getByRole('button', { name: 'Enviar Música' }).click()
