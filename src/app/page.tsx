@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { Search } from "lucide-react";
+import { Suspense } from "react";
 import logo from "./public/logo.png";
 import Header from "./components/header";
 import Card from "./components/card";
@@ -10,8 +11,8 @@ export default  async  function Home() {
   const tracks = await getPopularTracks();
   return (
     <div>
+     
       <Header />
-      
       {/* Seção principal */}
       <section className="flex flex-col lg:flex-row justify-center items-center gap-14 py-5 px-4">
         <div className="flex flex-col lg:flex-row justify-center gap-5 bg-[#1E1E1E] w-full lg:w-auto">
