@@ -2,7 +2,7 @@
  export const uploadPage = (page) => {
 
     const opensite = async () => {
-        await page.goto('http://localhost:3000/upload');
+        await page.goto('https://oncler.netlify.app/upload');
     }
     const submitForm = async (playload) => {
         await page

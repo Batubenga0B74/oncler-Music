@@ -1,7 +1,7 @@
  export const cadastroPage = (page) =>{
     const open = async ()=>{
         await page
-        .goto('http://localhost:3000/cadastro');
+        .goto('https://oncler.netlify.app/cadastro');
     }
     const form = async (playload) =>{
         await page

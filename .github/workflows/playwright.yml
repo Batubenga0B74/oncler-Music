@@ -6,11 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write   # garante push no gh-pages
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -36,12 +38,20 @@ jobs:
           path: gh-pages
 
       - name: Build Allure Report
-        uses: simple-elf/allure-report-action@v1.10     
+        uses: simple-elf/allure-report-action@v1.10
         if: always()
         with:
           gh_pages: gh-pages
           allure_history: allure-history
           allure_results: allure-results
+
+      - name: Remove nested .git from allure-history
+        if: always()
+        run: |
+          if [ -d allure-history/.git ]; then
+            chmod -R u+w allure-history/.git || true
+            rm -rf allure-history/.git
+          fi
 
       - name: Publish Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -50,3 +60,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+          force_orphan: true
+          user_name: ${{ github.actor }}
+          user_email: ${{ github.actor }}@users.noreply.github.com
