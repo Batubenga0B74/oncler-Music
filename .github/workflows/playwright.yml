@@ -27,9 +27,9 @@ jobs:
 
       - name: Preparar histórico
         run: |
-          mkdir -p allure-history
-          rm -rf allure-history/* || true
-          cp -r allure-report/* allure-history/
+          mkdir -p allure-history      # Cria pasta p/ histórico
+          rm -rf allure-history/* || true    # Limpa conteúdos antigos
+          cp -r allure-report/* allure-history/  # Copia novo relatório
           touch allure-history/.nojekyll   # evita bug do GitHub Pages com underline/_
 
       - name: Publicar no GitHub Pages
