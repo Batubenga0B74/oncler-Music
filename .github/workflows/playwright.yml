@@ -1,65 +1,38 @@
-name: Playwright Tests
+name: Testes + Allure Report
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ "main" ]   # ajusta se tua branch principal tiver outro nome
   pull_request:
-    branches: [ main ]
-
-permissions:
-  contents: write   # garante push no gh-pages
 
 jobs:
-  test:
-    timeout-minutes: 60
+  tests:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout código
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+      - name: Instalar dependências
+        run: npm install
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Install Playwright Browsers
-        run: npx playwright install chromium
-
-      - name: Run Playwright tests
-        run: npx playwright test --reporter=line,allure-playwright
-
-      - name: Load test report history
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-
-      - name: Build Allure Report
-        uses: simple-elf/allure-report-action@v1.10
-        if: always()
-        with:
-          gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: allure-results
-
-      - name: Remove nested .git from allure-history
-        if: always()
+      - name: Rodar testes com Allure
         run: |
-          if [ -d allure-history/.git ]; then
-            chmod -R u+w allure-history/.git || true
-            rm -rf allure-history/.git
-          fi
+          npx playwright test --reporter=line,allure-playwright
+          # Gera o relatório bruto do Allure
+          npx allure generate allure-results --clean -o allure-report
 
-      - name: Publish Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        if: always()
+      # ⚠️ Aqui é onde dava o erro
+      # Agora só limpamos os relatórios antigos, mas mantemos o .git
+      - name: Preparar histórico
+        run: |
+          mkdir -p allure-history
+          rm -rf allure-history/* || true
+          cp -r allure-report/* allure-history/
+
+      - name: Publicar no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
-          force_orphan: true
-          user_name: ${{ github.actor }}
-          user_email: ${{ github.actor }}@users.noreply.github.com
+          publish_dir: ./allure-history
+          keep_files: true   # mantém histórico do Allure
