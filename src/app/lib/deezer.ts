@@ -9,7 +9,7 @@ interface DeezerChartResponse {
 export async function getPopularTracks(): Promise<DeezerTrack[]> {
   try {
     const response = await axios.get<DeezerChartResponse>(
-      " https://api.deezer.com/search/track?q=C4%20Pedro"
+      "https://api.deezer.com/chart/169/tracks"
     );
     return response.data.data; // retorna só a lista de músicas
   } catch (error) {
