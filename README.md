@@ -46,3 +46,8 @@ npm install
 
 # Inicie o servidor de desenvolvimento
 npm run dev
+
+
+
+# rodar relatorio
+npx allure serve

@@ -29,11 +29,11 @@ export default function UploadPage() {
     formData.append("genre", genre);
     formData.append("language", language);
 
-    try {
-      await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
+    // try {
+    //   await fetch("/api/upload", {
+    //     method: "POST",
+    //     body: formData,
+    //   });
 
       // 🔹 Resetar formulário
       setFile(null);
@@ -42,9 +42,9 @@ export default function UploadPage() {
 
       // 🔹 Mostrar modal de sucesso
       setShowModal(true);
-    } catch (err) {
-      console.error("Erro no upload:", err);
-    }
+    // } catch (err) {
+    //   console.error("Erro no upload:", err);
+    // }
   };
 
   return (
