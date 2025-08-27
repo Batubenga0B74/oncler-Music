@@ -17,7 +17,7 @@ jobs:
       run: npm ci
 
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: npx playwright install chromium
 
     - name: Instalar Allure
       run: sudo apt-get install -y allure
