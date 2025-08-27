@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import { DeezerTrack } from "../types/deezer";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import WaveSurfer from "wavesurfer.js";
 import { Play, Pause } from "lucide-react";
 
-// props para o componente Card
 interface CardProps {
   tracks?: DeezerTrack[];
 }
@@ -25,40 +24,44 @@ export default function Card({ tracks = [] }: CardProps) {
   );
 }
 
-// componente de cada música
 function TrackItem({ track }: { track: DeezerTrack }) {
   const waveformRef = useRef<HTMLDivElement>(null);
   const wavesurferRef = useRef<WaveSurfer | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlay = () => {
-    const ws = wavesurferRef.current;
-
-    if (!ws && waveformRef.current) {
-      const newWs = WaveSurfer.create({
+  useEffect(() => {
+    if (waveformRef.current && !wavesurferRef.current) {
+      const ws = WaveSurfer.create({
         container: waveformRef.current,
         waveColor: "#999",
         progressColor: "#fff",
         cursorColor: "#fff",
         height: 50,
         barWidth: 2,
-        backend: "MediaElement", // usa HTMLAudioElement por baixo
       });
 
-      // carrega a URL do preview direto
-      newWs.load(track.preview);
+      ws.load(track.preview); // carrega o preview de 30s do Deezer
 
-      newWs.on("ready", () => {
-        newWs.play();
-        setIsPlaying(true);
+      ws.on("ready", () => {
+        console.log(`Waveform pronto para: ${track.title}`);
       });
 
-      newWs.on("finish", () => setIsPlaying(false));
+      ws.on("play", () => setIsPlaying(true));
+      ws.on("pause", () => setIsPlaying(false));
+      ws.on("finish", () => setIsPlaying(false));
 
-      wavesurferRef.current = newWs;
-    } else if (ws) {
-      ws.playPause();
-      setIsPlaying(ws.isPlaying());
+      wavesurferRef.current = ws;
+    }
+
+    return () => {
+      wavesurferRef.current?.destroy();
+      wavesurferRef.current = null;
+    };
+  }, [track.preview, track.title]);
+
+  const handlePlay = () => {
+    if (wavesurferRef.current) {
+      wavesurferRef.current.playPause();
     }
   };
 
@@ -85,6 +88,7 @@ function TrackItem({ track }: { track: DeezerTrack }) {
         </button>
       </div>
 
+      {/* ondas do áudio */}
       <div ref={waveformRef} className="w-full mt-2" />
 
       <h3 className="text-white font-semibold mt-2 text-center truncate w-full">
