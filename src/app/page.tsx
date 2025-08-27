@@ -1,18 +1,19 @@
-"use client"
 import Image from "next/image";
-import { Search } from "lucide-react";
 import { Suspense } from "react";
 import logo from "./public/logo.png";
 import Header from "./components/header";
 import Card from "./components/card";
 import Footer from "./components/footer";
 import { getPopularTracks } from "./lib/deezer"; 
-export default  async  function Home() {
+
+export default async function Home() {
+  // chamada no servidor (sem CORS)
   const tracks = await getPopularTracks();
+
   return (
     <div>
-     
       <Header />
+
       {/* Seção principal */}
       <section className="flex flex-col lg:flex-row justify-center items-center gap-14 py-5 px-4">
         <div className="flex flex-col lg:flex-row justify-center gap-5 bg-[#1E1E1E] w-full lg:w-auto">
@@ -25,7 +26,8 @@ export default  async  function Home() {
 
             <section className="text-center justify-center flex">
               <p className="max-w-[352px] font-semibold leading-[23px] text-center tracking-normal text-[#A49797]">
-                monic is an Artist-firts music pltaform that helps monic is an Artist-firts <span className="text-white">music pltaform that helps</span>
+                monic is an Artist-firts music pltaform that helps monic is an Artist-firts{" "}
+                <span className="text-white">music pltaform that helps</span>
               </p>
             </section>
 
@@ -51,7 +53,7 @@ export default  async  function Home() {
       <main className="py-5 flex flex-col lg:flex-row justify-center items-start gap-10 px-4">
         
         {/* Menu lateral */}
-        <section className="flex flex-col gap-10 justify-center px-10  sm:items-center ">
+        <section className="flex flex-col gap-10 justify-center px-10 sm:items-center ">
           <div className=" sm:w-[384px] border-b-2 border-b-[#A49797]">
             <h1 className="w-[100px] text-xl text-[#53AA00] py-8 font-semibold">BROWSER</h1>
             <p className="font-semibold text-[#A49797] leading-8">Trending songs</p>
@@ -86,10 +88,11 @@ export default  async  function Home() {
           {[1, 2, 3].map((_, index) => (
             <article key={index} className="px-4 sm:px-10 py-5">
               <span className="flex justify-between items-center py-3">
-                <h1 className="cursor-pointer font-bold text-xl text-white">TRADING SONGS</h1>
-                <p className="cursor-pointer font-bold text-sm text-[#53AA00]">VIEWS ALL</p>
+                <h1 className="cursor-pointer font-bold text-xl text-white">TRENDING SONGS</h1>
+                <p className="cursor-pointer font-bold text-sm text-[#53AA00]">VIEW ALL</p>
               </span>
               <section className="w-full overflow-x-auto flex gap-5 sm:gap-10">
+                {/* Aqui o Card é client component */}
                 <Card tracks={tracks} />
               </section>
             </article>

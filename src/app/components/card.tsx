@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import { DeezerTrack } from "../types/deezer";
-import { useRef, useState, useEffect } from "react";
-import WaveSurfer from "wavesurfer.js";
+import { useRef, useState } from "react";
 import { Play, Pause } from "lucide-react";
 
 interface CardProps {
@@ -16,7 +15,7 @@ export default function Card({ tracks = [] }: CardProps) {
   }
 
   return (
-    <ul className="flex gap-5 overflow-x-auto hide-scrollbar">
+    <ul className="flex gap-5 overflow-x-auto hide-scrollbar p-4">
       {tracks.map((track) => (
         <TrackItem key={track.id} track={track} />
       ))}
@@ -25,43 +24,16 @@ export default function Card({ tracks = [] }: CardProps) {
 }
 
 function TrackItem({ track }: { track: DeezerTrack }) {
-  const waveformRef = useRef<HTMLDivElement>(null);
-  const wavesurferRef = useRef<WaveSurfer | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    if (waveformRef.current && !wavesurferRef.current) {
-      const ws = WaveSurfer.create({
-        container: waveformRef.current,
-        waveColor: "#999",
-        progressColor: "#fff",
-        cursorColor: "#fff",
-        height: 50,
-        barWidth: 2,
-      });
+  const handlePlayPause = () => {
+    if (!audioRef.current) return;
 
-      ws.load(track.preview); // carrega o preview de 30s do Deezer
-
-      ws.on("ready", () => {
-        console.log(`Waveform pronto para: ${track.title}`);
-      });
-
-      ws.on("play", () => setIsPlaying(true));
-      ws.on("pause", () => setIsPlaying(false));
-      ws.on("finish", () => setIsPlaying(false));
-
-      wavesurferRef.current = ws;
-    }
-
-    return () => {
-      wavesurferRef.current?.destroy();
-      wavesurferRef.current = null;
-    };
-  }, [track.preview, track.title]);
-
-  const handlePlay = () => {
-    if (wavesurferRef.current) {
-      wavesurferRef.current.playPause();
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
     }
   };
 
@@ -69,32 +41,44 @@ function TrackItem({ track }: { track: DeezerTrack }) {
     <li className="min-w-[187px] flex flex-col items-center">
       <div className="relative group">
         <Image
-          src={track.album.cover}
+          src={track.album.cover} // 👈 capa de tamanho ideal (250x250)
           alt={track.title}
           width={187}
           height={187}
           className="rounded-md"
         />
 
-        <button
-          onClick={handlePlay}
-          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/40 rounded-md"
-        >
-          {isPlaying ? (
-            <Pause className="text-white w-10 h-10" />
-          ) : (
-            <Play className="text-white w-10 h-10" />
-          )}
-        </button>
+        {/* botão de play/pause */}
+        {track.preview && (
+          <button
+            onClick={handlePlayPause}
+            className="absolute bottom-2 right-2 flex items-center justify-center bg-black/60 rounded-full p-2 hover:bg-black/80 transition"
+          >
+            {isPlaying ? (
+              <Pause className="text-white w-6 h-6" />
+            ) : (
+              <Play className="text-white w-6 h-6" />
+            )}
+          </button>
+        )}
       </div>
 
-      {/* ondas do áudio */}
-      <div ref={waveformRef} className="w-full mt-2" />
-
+      {/* título e artista */}
       <h3 className="text-white font-semibold mt-2 text-center truncate w-full">
         {track.title}
       </h3>
       <p className="text-gray-400 text-sm">{track.artist.name}</p>
+
+      {/* player escondido (só existe se tiver preview) */}
+      {track.preview && (
+        <audio
+          ref={audioRef}
+          src={track.preview}
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onEnded={() => setIsPlaying(false)}
+        />
+      )}
     </li>
   );
 }
