@@ -10,6 +10,9 @@ interface CardProps {
 }
 
 export default function Card({ tracks = [] }: CardProps) {
+  // guarda o id da música que está tocando
+  const [playingId, setPlayingId] = useState<number | null>(null);
+
   if (!tracks || tracks.length === 0) {
     return <p className="text-white">Nenhuma música encontrada.</p>;
   }
@@ -17,23 +20,40 @@ export default function Card({ tracks = [] }: CardProps) {
   return (
     <ul className="flex gap-5 overflow-x-auto hide-scrollbar p-4">
       {tracks.map((track) => (
-        <TrackItem key={track.id} track={track} />
+        <TrackItem
+          key={track.id}
+          track={track}
+          isPlaying={playingId === track.id}
+          onPlay={(id) => setPlayingId(id)}
+          onPause={() => setPlayingId(null)}
+        />
       ))}
     </ul>
   );
 }
 
-function TrackItem({ track }: { track: DeezerTrack }) {
+function TrackItem({
+  track,
+  isPlaying,
+  onPlay,
+  onPause,
+}: {
+  track: DeezerTrack;
+  isPlaying: boolean;
+  onPlay: (id: number) => void;
+  onPause: () => void;
+}) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlayPause = () => {
     if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
+      onPause();
     } else {
       audioRef.current.play();
+      onPlay(track.id);
     }
   };
 
@@ -41,14 +61,14 @@ function TrackItem({ track }: { track: DeezerTrack }) {
     <li className="min-w-[187px] flex flex-col items-center">
       <div className="relative group">
         <Image
-          src={track.album.cover} // 👈 capa de tamanho ideal (250x250)
+          src={track.album.cover} // capa do álbum
           alt={track.title}
           width={187}
           height={187}
           className="rounded-md"
         />
 
-        {/* botão de play/pause */}
+        {/* botão play/pause */}
         {track.preview && (
           <button
             onClick={handlePlayPause}
@@ -69,14 +89,12 @@ function TrackItem({ track }: { track: DeezerTrack }) {
       </h3>
       <p className="text-gray-400 text-sm">{track.artist.name}</p>
 
-      {/* player escondido (só existe se tiver preview) */}
+      {/* player escondido */}
       {track.preview && (
         <audio
           ref={audioRef}
           src={track.preview}
-          onPlay={() => setIsPlaying(true)}
-          onPause={() => setIsPlaying(false)}
-          onEnded={() => setIsPlaying(false)}
+          onEnded={() => onPause()}
         />
       )}
     </li>
