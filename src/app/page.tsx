@@ -1,4 +1,4 @@
-import "../sentry.client.config";
+import "../../sentry.client.config";
 import Image from "next/image";
 import { Suspense } from "react";
 import logo from "./public/logo.png";
