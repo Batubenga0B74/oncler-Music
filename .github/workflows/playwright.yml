@@ -16,26 +16,26 @@ jobs:
       - name: Instalar dependências
         run: npm ci   # mais rápido e recomendado no CI
 
-      - name: rodar os testes de Integração
+      - name: Rodar os testes de Integração com jest
         run: npx jest
 
       - name: Instalar Chromium do Playwright
         run: npx playwright install --with-deps chromium
 
-      - name: Rodar testes com Allure
+      - name:  Rodando Testes E2E com Allure
         run: |
           npx playwright test --reporter=line,allure-playwright
           # Gera o relatório bruto do Allure
           npx allure generate allure-results --clean -o allure-report
 
-      - name: Preparar histórico
+      - name: Preparar histórico dos testes Allure
         run: |
           mkdir -p allure-history      # Cria pasta p/ histórico
           rm -rf allure-history/* || true    # Limpa conteúdos antigos
           cp -r allure-report/* allure-history/  # Copia novo relatório
           touch allure-history/.nojekyll   # evita bug do GitHub Pages com underline/_
 
-      - name: Publicar no GitHub Pages
+      - name: Publicar o Relatório no GitHub Pages
         if: always()   # publica mesmo se os testes falharem
         uses: peaceiris/actions-gh-pages@v3
         with:

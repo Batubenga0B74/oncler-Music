@@ -25,10 +25,22 @@ O projeto foi desenvolvido com foco em **experiência do usuário**, **design mo
 ## 🛠️ Tecnologias Utilizadas
 
 - **Frontend:** React + Next.js + Tailwind CSS
-- **Backend:** Node.js + Express
-- **Banco de Dados:** MongoDB
-- **Armazenamento de Arquivos:** AWS S3
-- **Autenticação:** JWT
+- **Backend:** Node.js + fastfy
+- **Banco de Dados:** splite
+- **deezer:** Api externas de preview de músicas
+- **deploy:** netlify
+
+
+
+## 🛠️ Ferramentas de testes e Monitoramento
+
+- **E2E:**playwright
+- **Relatório:**Allure report 
+- **deploy relatorio:** Github pages 
+- **CICD** Github actions 
+- **Monitoramento** sentry
+- **test de integração** Jest
+- **test unitários** Jest
 
 ---
 
@@ -47,7 +59,11 @@ npm install
 # Inicie o servidor de desenvolvimento
 npm run dev
 
+# Rodar teste de integração
+npx jest
 
+# rodar test e2e com playwrigtht
+ npx playwright test
 
-# rodar relatorio
+ # rodar relatorio
 npx allure serve
