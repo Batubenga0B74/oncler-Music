@@ -31,16 +31,6 @@ const handleSubmite = async (e:React.FormEvent) =>{
 }
 
 
-
-
-
-
-
-
-
-
-
-
     return (
       <main className="bg-[#08050A] w-full min-h-screen">
         {/* Bolha de fundo */}
