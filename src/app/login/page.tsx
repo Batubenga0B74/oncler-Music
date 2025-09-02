@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc"; // ícone do Google
 
@@ -8,15 +9,11 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!acceptTerms) {
-      setError("É necessário aceitar os termos para continuar.");
-      return;
-    }
+
 
     if (email === "testoncler@gmail.com" && password === "oncler2025") {
       localStorage.setItem("isLoggedIn", "true");
@@ -76,17 +73,13 @@ export default function Login() {
           </div>
 
           {/* Checkbox de termos */}
-          <div className="w-full flex items-center gap-2 mt-4">
-            <input
-              id="terms"
-              type="checkbox"
-              checked={acceptTerms}
-              onChange={(e) => setAcceptTerms(e.target.checked)}
-              className="w-4 h-4 cursor-pointer"
-            />
-            <label htmlFor="terms" className="text-white cursor-pointer">
-              Aceitar termos
-            </label>
+          <div className="w-full flex items-center justify-between gap-2 mt-4">
+
+
+            <div>
+              <Link href="/cadastro" className="text-white font-bold">Criar conta</Link>
+            </div>
+
           </div>
 
           {/* Erro */}

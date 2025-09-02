@@ -9,13 +9,13 @@ export default function Perfil() {
             <main className="py-5 pt-16">
 
                 {/* Capa responsiva */}
-                <figure className="w-full max-w-[1328px] bg-black m-auto justify-center flex">
+            <figure className="w-full max-w-[1328px] bg-black m-auto justify-center flex">
                     <Image
                         src="/default-cover-image@2x 2.png"
                         alt=""
                         width={886}
                         height={10}
-                        className="w-full h-auto"
+                     className="w-full h-auto"
                     />
                 </figure>
 

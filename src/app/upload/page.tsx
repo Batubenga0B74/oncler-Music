@@ -15,7 +15,7 @@ export default function UploadPage() {
       setFile(selectedFile);
     }
   };
-    // E
+  // E
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!file) {
@@ -35,13 +35,13 @@ export default function UploadPage() {
     //     body: formData,
     //   });
 
-      // 🔹 Resetar formulário
-      setFile(null);
-      setGenre("");
-      setLanguage("");
+    // 🔹 Resetar formulário
+    setFile(null);
+    setGenre("");
+    setLanguage("");
 
-      // 🔹 Mostrar modal de sucesso
-      setShowModal(true);
+    // 🔹 Mostrar modal de sucesso
+    setShowModal(true);
     // } catch (err) {
     //   console.error("Erro no upload:", err);
     // }
@@ -50,26 +50,24 @@ export default function UploadPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0B0B0B] to-[#0E0F0E] flex items-center justify-center p-6">
       <div className="w-[769px] h-[992px] border border-gray-800 rounded-lg p-6 bg-[#0A0A0A] flex flex-col">
-        
+
         {/* Tabs */}
         <div className="flex border border-green-600 rounded-lg overflow-hidden">
           <button
             onClick={() => setActiveTab("single")}
-            className={`flex-1 py-3 text-base font-medium ${
-              activeTab === "single"
+            className={`flex-1 py-3 text-base font-medium ${activeTab === "single"
                 ? "bg-black text-white border-b-2 border-green-500"
                 : "text-gray-400"
-            }`}
+              }`}
           >
             upload single
           </button>
           <button
             onClick={() => setActiveTab("album")}
-            className={`flex-1 py-3 text-base font-medium ${
-              activeTab === "album"
+            className={`flex-1 py-3 text-base font-medium ${activeTab === "album"
                 ? "bg-black text-white border-b-2 border-green-500"
                 : "text-gray-400"
-            }`}
+              }`}
           >
             upload Album
           </button>
@@ -110,7 +108,7 @@ export default function UploadPage() {
             <input
               type="text"
               required
-              value={language} 
+              value={language}
               onChange={(e) => setLanguage(e.target.value)}
               placeholder="ex: English"
               className="w-full p-2 rounded bg-black text-white border border-gray-700"
