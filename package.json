@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@grafana/faro-react": "^2.2.0",
+    "@grafana/faro-web-sdk": "^2.2.0",
+    "@grafana/faro-web-tracing": "^2.2.0",
     "@sentry/nextjs": "^10.7.0",
     "allure-playwright": "^3.3.3",
     "axios": "^1.11.0",
@@ -22,6 +25,7 @@
     "wavesurfer.js": "^7.10.1"
   },
   "devDependencies": {
+    "@grafana/faro-webpack-plugin": "^0.8.2",
     "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
     "@types/jest": "^30.0.0",
